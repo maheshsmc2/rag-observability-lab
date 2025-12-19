@@ -1,0 +1,7 @@
+data/
+trace/*.json
+__pycache__/
+*.pyc
+*.npy
+*.bin
+.env
