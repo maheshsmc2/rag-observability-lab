@@ -7,6 +7,7 @@ from retriever import dense_search, hybrid_search, hybrid_then_rerank
 # Day 67: Answer Builder Layer (No-LLM) + Stable Envelope
 # ----------------------------
 DEFAULT_MIN_SCORE = 0.0  # inspect score scale first; then set per route if needed
+MIN_SCORE_MARGIN = 0.05  # Day 68: dominance gap (top1 - top2)
 
 FALLBACK_MESSAGE = (
     "I couldn't find strong enough evidence in the documents to answer confidently."
@@ -39,29 +40,62 @@ def classify_query(query: str) -> str:
 # ----------------------------
 # Day 66: Score + Envelope
 # ----------------------------
-def _extract_top_score(result):
+def _unwrap_results(result):
     """
-    Works with output format used in retriever.py (list[dict] with 'score').
-    Also supports dict wrappers with keys like 'hits'/'results'/'documents'/'docs'.
+    Normalize result into a list[dict] if possible.
+    Supports dict wrappers: hits/results/documents/docs.
     """
     if result is None:
         return None
 
     if isinstance(result, list):
-        if not result:
-            return None
-        if isinstance(result[0], dict):
-            return result[0].get("score", None)
-        return None
+        return result
 
     if isinstance(result, dict):
         for k in ("hits", "results", "documents", "docs"):
             v = result.get(k)
-            if isinstance(v, list) and v and isinstance(v[0], dict):
-                return v[0].get("score", None)
-        return result.get("score", None)
+            if isinstance(v, list):
+                return v
+        # If dict itself looks like a single hit, treat as 1-item list
+        if "score" in result or "text" in result or "chunk" in result or "content" in result:
+            return [result]
 
     return None
+
+
+def _extract_top_score(result):
+    """
+    Works with output format used in retriever.py (list[dict] with 'score').
+    Also supports dict wrappers with keys like 'hits'/'results'/'documents'/'docs'.
+    """
+    items = _unwrap_results(result)
+    if not items or not isinstance(items, list):
+        return None
+    if not items:
+        return None
+    if isinstance(items[0], dict):
+        return items[0].get("score", None)
+    return None
+
+
+def _extract_top2_scores(result):
+    """
+    Returns (top1, top2) float scores if available, else (None, None).
+    Supports list output and dict wrappers.
+    """
+    items = _unwrap_results(result)
+    if not isinstance(items, list) or len(items) < 2:
+        return None, None
+    if not isinstance(items[0], dict) or not isinstance(items[1], dict):
+        return None, None
+
+    s1 = items[0].get("score")
+    s2 = items[1].get("score")
+
+    try:
+        return float(s1), float(s2)
+    except Exception:
+        return None, None
 
 
 def _wrap(query: str, route_name: str, out, passed: bool, best_score, min_score):
@@ -76,10 +110,13 @@ def _wrap(query: str, route_name: str, out, passed: bool, best_score, min_score)
         "min_score": min_score,
         "results": out,
         "answer": None,
-        # Day 67 fields (filled later)
+        # Day 67 fields
         "evidence_preview": [],
         "suggested_queries": [],
         "how_to_improve": [],
+        "reason": None,
+        # Day 68 field
+        "score_margin": None,
     }
 
 
@@ -127,23 +164,14 @@ def _suggested_queries(query: str):
 def _extract_evidence_preview(results, n: int = 2):
     """
     Pulls a small preview from the top-N results.
-    This is intentionally defensive because different retrievers can return different keys.
+    Defensive across different retriever keys.
     """
-    if results is None:
-        return []
-
-    # Unwrap dict wrappers
-    if isinstance(results, dict):
-        for k in ("hits", "results", "documents", "docs"):
-            if k in results and isinstance(results[k], list):
-                results = results[k]
-                break
-
-    if not isinstance(results, list):
+    items = _unwrap_results(results)
+    if not isinstance(items, list):
         return []
 
     previews = []
-    for item in results[:n]:
+    for item in items[:n]:
         if not isinstance(item, dict):
             continue
 
@@ -163,7 +191,8 @@ def _gate_if_low_confidence(query: str, result, min_score: float, debug: bool, r
     """
     Always returns a standard envelope dict.
     If best score < min_score, sets answer to fallback and passed_confidence_gate=False,
-    plus Day 67: suggested_queries + how_to_improve.
+    plus Day 67: suggested_queries + how_to_improve + evidence preview.
+    Day 68: margin gate using top1-top2 dominance.
     """
     best_score = _extract_top_score(result)
 
@@ -184,6 +213,7 @@ def _gate_if_low_confidence(query: str, result, min_score: float, debug: bool, r
         env["reason"] = "No score found in results"
         env["suggested_queries"] = _suggested_queries(query)
         env["how_to_improve"] = HOW_TO_IMPROVE
+        env["evidence_preview"] = _extract_evidence_preview(result, n=1)
         return env
 
     # Non-numeric score => low confidence
@@ -197,9 +227,10 @@ def _gate_if_low_confidence(query: str, result, min_score: float, debug: bool, r
         env["reason"] = "Non-numeric score in results"
         env["suggested_queries"] = _suggested_queries(query)
         env["how_to_improve"] = HOW_TO_IMPROVE
+        env["evidence_preview"] = _extract_evidence_preview(result, n=1)
         return env
 
-    # Compare with threshold
+    # Compare with threshold (absolute gate)
     if best_score_f < float(min_score):
         if debug:
             print(f"[DAY67][{route_name}] NO_ANSWER. best_score={best_score_f:.4f} < min_score={float(min_score):.4f}")
@@ -211,12 +242,41 @@ def _gate_if_low_confidence(query: str, result, min_score: float, debug: bool, r
         env["evidence_preview"] = _extract_evidence_preview(result, n=1)  # show top-1 even if weak
         return env
 
+    # ----------------------------
+    # Day 68: margin gate (dominance)
+    # ----------------------------
+    top1, top2 = _extract_top2_scores(result)
+    if top1 is not None and top2 is not None:
+        margin = top1 - top2
+        if margin < float(MIN_SCORE_MARGIN):
+            if debug:
+                print(
+                    f"[DAY68][{route_name}] NO_ANSWER. "
+                    f"margin={margin:.4f} < MIN_SCORE_MARGIN={MIN_SCORE_MARGIN}"
+                )
+            env = _wrap(query, route_name, result, False, top1, float(min_score))
+            env["answer"] = FALLBACK_MESSAGE
+            env["reason"] = "Low score dominance (ambiguous match)"
+            env["suggested_queries"] = _suggested_queries(query)
+            env["how_to_improve"] = HOW_TO_IMPROVE
+            env["evidence_preview"] = _extract_evidence_preview(result, n=1)
+            env["score_margin"] = margin
+            return env
+
     # PASS
     if debug:
-        print(f"[DAY67][{route_name}] PASS. best_score={best_score_f:.4f} >= min_score={float(min_score):.4f}")
+        if top1 is not None and top2 is not None:
+            print(
+                f"[DAY68][{route_name}] PASS. best_score={best_score_f:.4f} >= min_score={float(min_score):.4f} "
+                f"| margin={(top1-top2):.4f} (MIN_SCORE_MARGIN={MIN_SCORE_MARGIN})"
+            )
+        else:
+            print(f"[DAY67][{route_name}] PASS. best_score={best_score_f:.4f} >= min_score={float(min_score):.4f}")
 
     env = _wrap(query, route_name, result, True, best_score_f, float(min_score))
     env["evidence_preview"] = _extract_evidence_preview(result, n=2)
+    if top1 is not None and top2 is not None:
+        env["score_margin"] = float(top1 - top2)
     return env
 
 
@@ -242,8 +302,9 @@ def run_query(
     if debug:
         print("\n" + "=" * 60)
         print(
-            f"[DAY67] query='{query}' | q_type='{q_type}' | "
-            f"top_k={top_k} | alpha={alpha} | use_reranker={use_reranker} | min_score={min_score}"
+            f"[DAY68] query='{query}' | q_type='{q_type}' | "
+            f"top_k={top_k} | alpha={alpha} | use_reranker={use_reranker} | "
+            f"min_score={min_score} | MIN_SCORE_MARGIN={MIN_SCORE_MARGIN}"
         )
 
     # Route A: definition → dense only
@@ -255,7 +316,9 @@ def run_query(
     if q_type == "policy":
         if use_reranker:
             out = hybrid_then_rerank(query, retrieve_k=20, final_k=top_k, alpha=alpha)
-            return _gate_if_low_confidence(query, out, min_score=min_score, debug=debug, route_name="policy:hybrid_then_rerank")
+            return _gate_if_low_confidence(
+                query, out, min_score=min_score, debug=debug, route_name="policy:hybrid_then_rerank"
+            )
 
         out = hybrid_search(query, top_k=top_k, alpha=alpha)
         return _gate_if_low_confidence(query, out, min_score=min_score, debug=debug, route_name="policy:hybrid")
@@ -263,7 +326,9 @@ def run_query(
     # Route C: general → hybrid (+ optional rerank)
     if use_reranker:
         out = hybrid_then_rerank(query, retrieve_k=20, final_k=top_k, alpha=alpha)
-        return _gate_if_low_confidence(query, out, min_score=min_score, debug=debug, route_name="general:hybrid_then_rerank")
+        return _gate_if_low_confidence(
+            query, out, min_score=min_score, debug=debug, route_name="general:hybrid_then_rerank"
+        )
 
     out = hybrid_search(query, top_k=top_k, alpha=alpha)
     return _gate_if_low_confidence(query, out, min_score=min_score, debug=debug, route_name="general:hybrid")
@@ -276,13 +341,14 @@ if __name__ == "__main__":
         "explain attendance policy",
         "tell me about RAG",
         "random nonsense xyz123",
+        "asdjkl qweoi zxcmn",
     ]
 
     for q in tests:
         print(q, "=>", classify_query(q))
         out = run_query(q, top_k=3, alpha=0.2, use_reranker=True, min_score=0.35, debug=True)
-        print("PASSED:", out.get("passed_confidence_gate"), "| BEST_SCORE:", out.get("best_score"))
+        print("PASSED:", out.get("passed_confidence_gate"), "| BEST_SCORE:", out.get("best_score"), "| MARGIN:", out.get("score_margin"))
+        print("REASON:", out.get("reason"))
         print("SUGGESTED:", out.get("suggested_queries"))
         print("EVIDENCE:", out.get("evidence_preview"))
-        print("OUTPUT:", out)
         print("-" * 60)
