@@ -1,0 +1,5 @@
+[
+  { "id": "Q1", "query": "What is the probation period?", "expected_ids": ["c11", "c1", "c2"] },
+  { "id": "Q2", "query": "Is medical leave allowed during probation?", "expected_ids": ["c2", "c1", "c11"] },
+  { "id": "Q3", "query": "How many days notice is required for resignation?", "expected_ids": ["c2", "c9", "c1", "c0", "c3"] }
+]
