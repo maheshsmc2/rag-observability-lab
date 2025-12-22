@@ -1,0 +1,23 @@
+[
+  {
+    "qid": "Q1",
+    "question": "What is Milvus used for?",
+    "gold_doc_ids": [
+      "d1"
+    ]
+  },
+  {
+    "qid": "Q2",
+    "question": "How does BM25 rank documents?",
+    "gold_doc_ids": [
+      "d2"
+    ]
+  },
+  {
+    "qid": "Q3",
+    "question": "Which metric compares text embeddings?",
+    "gold_doc_ids": [
+      "d3"
+    ]
+  }
+]
