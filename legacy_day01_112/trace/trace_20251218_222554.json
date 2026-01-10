@@ -1,0 +1,383 @@
+{
+  "query": "probation period policy",
+  "meta": {
+    "retrieve_k": 20,
+    "final_k": 5,
+    "alpha": 0.2,
+    "use_reranker": true,
+    "index_version": "v1",
+    "model_name": "sentence-transformers/all-MiniLM-L6-v2",
+    "reranker_model": "cross-encoder/ms-marco-MiniLM-L-6-v2"
+  },
+  "stages": {
+    "dense": [
+      {
+        "rank": 1,
+        "id": "c0",
+        "score_dense": 0.34380030632019043,
+        "text": "hr policy document 1. paid leave policy employees are entitled to 20 days of paid leave per year. le"
+      },
+      {
+        "rank": 2,
+        "id": "c4",
+        "score_dense": 0.27074360847473145,
+        "text": "wfh up to 1 day per week. 4. travel & expense policy domestic travel must be booked in economy class"
+      },
+      {
+        "rank": 3,
+        "id": "c3",
+        "score_dense": 0.2651198208332062,
+        "text": "me ( wfh ) policy employees may work from home up to 3 days per week with prior approval. interns may"
+      },
+      {
+        "rank": 4,
+        "id": "c1",
+        "score_dense": 0.22802069783210754,
+        "text": "ave must be approved by the reporting manager. 2. sick leave employees may take up to 10 days of sic"
+      },
+      {
+        "rank": 5,
+        "id": "c2",
+        "score_dense": 0.22726231813430786,
+        "text": "k leave annually. a medical certificate is required for absences longer than 2 days. 3. work - from - ho"
+      },
+      {
+        "rank": 6,
+        "id": "c9",
+        "score_dense": 0.22653430700302124,
+        "text": "approval. claims must be filed within 30 days of travel. 7. remote work equipment employees may req"
+      },
+      {
+        "rank": 7,
+        "id": "c11",
+        "score_dense": 0.20038220286369324,
+        "text": "ned upon exit. 8. code of conduct employees are expected to maintain professionalism, avoid conflict"
+      },
+      {
+        "rank": 8,
+        "id": "c8",
+        "score_dense": 0.17157068848609924,
+        "text": "ector approval. 6. reimbursement documentation all claims must include original receipts and manager"
+      },
+      {
+        "rank": 9,
+        "id": "c5",
+        "score_dense": 0.1668635606765747,
+        "text": ". business class is not allowed for domestic travel. employees may claim reimbursement up to 50, 000"
+      },
+      {
+        "rank": 10,
+        "id": "c12",
+        "score_dense": 0.15500161051750183,
+        "text": "s of interest, and adhere to company confidentiality guidelines."
+      },
+      {
+        "rank": 11,
+        "id": "c7",
+        "score_dense": 0.10586422681808472,
+        "text": "through the approved travel portal. international flights may be booked in premium economy with dir"
+      },
+      {
+        "rank": 12,
+        "id": "c6",
+        "score_dense": 0.09059890359640121,
+        "text": "yen per month for work - related expenses. 5. flight booking rules all domestic flights must be booked"
+      },
+      {
+        "rank": 13,
+        "id": "c10",
+        "score_dense": 0.06548628211021423,
+        "text": "uest company - provided equipment including monitor, keyboard, and headphones. equipment must be retur"
+      }
+    ],
+    "bm25": [
+      {
+        "rank": 1,
+        "id": "c0",
+        "score_bm25": 0.2571784525473317,
+        "text": "hr policy document 1. paid leave policy employees are entitled to 20 days of paid leave per year. le"
+      },
+      {
+        "rank": 2,
+        "id": "c4",
+        "score_bm25": 0.15310924370110604,
+        "text": "wfh up to 1 day per week. 4. travel & expense policy domestic travel must be booked in economy class"
+      },
+      {
+        "rank": 3,
+        "id": "c3",
+        "score_bm25": 0.1462896122332338,
+        "text": "me ( wfh ) policy employees may work from home up to 3 days per week with prior approval. interns may"
+      },
+      {
+        "rank": 4,
+        "id": "c1",
+        "score_bm25": 0.0,
+        "text": "ave must be approved by the reporting manager. 2. sick leave employees may take up to 10 days of sic"
+      },
+      {
+        "rank": 5,
+        "id": "c2",
+        "score_bm25": 0.0,
+        "text": "k leave annually. a medical certificate is required for absences longer than 2 days. 3. work - from - ho"
+      },
+      {
+        "rank": 6,
+        "id": "c5",
+        "score_bm25": 0.0,
+        "text": ". business class is not allowed for domestic travel. employees may claim reimbursement up to 50, 000"
+      },
+      {
+        "rank": 7,
+        "id": "c6",
+        "score_bm25": 0.0,
+        "text": "yen per month for work - related expenses. 5. flight booking rules all domestic flights must be booked"
+      },
+      {
+        "rank": 8,
+        "id": "c7",
+        "score_bm25": 0.0,
+        "text": "through the approved travel portal. international flights may be booked in premium economy with dir"
+      },
+      {
+        "rank": 9,
+        "id": "c8",
+        "score_bm25": 0.0,
+        "text": "ector approval. 6. reimbursement documentation all claims must include original receipts and manager"
+      },
+      {
+        "rank": 10,
+        "id": "c9",
+        "score_bm25": 0.0,
+        "text": "approval. claims must be filed within 30 days of travel. 7. remote work equipment employees may req"
+      },
+      {
+        "rank": 11,
+        "id": "c10",
+        "score_bm25": 0.0,
+        "text": "uest company - provided equipment including monitor, keyboard, and headphones. equipment must be retur"
+      },
+      {
+        "rank": 12,
+        "id": "c11",
+        "score_bm25": 0.0,
+        "text": "ned upon exit. 8. code of conduct employees are expected to maintain professionalism, avoid conflict"
+      },
+      {
+        "rank": 13,
+        "id": "c12",
+        "score_bm25": 0.0,
+        "text": "s of interest, and adhere to company confidentiality guidelines."
+      }
+    ],
+    "hybrid": [
+      {
+        "rank": 1,
+        "id": "c0",
+        "score_hybrid": 1.0,
+        "score_dense": 0.34380030632019043,
+        "score_bm25": 0.2571784525473317,
+        "text": "hr policy document 1. paid leave policy employees are entitled to 20 days of paid leave per year. le"
+      },
+      {
+        "rank": 2,
+        "id": "c4",
+        "score_hybrid": 0.70907062292099,
+        "score_dense": 0.27074360847473145,
+        "score_bm25": 0.15310924370110604,
+        "text": "wfh up to 1 day per week. 4. travel & expense policy domestic travel must be booked in economy class"
+      },
+      {
+        "rank": 3,
+        "id": "c3",
+        "score_hybrid": 0.6876018643379211,
+        "score_dense": 0.2651198208332062,
+        "score_bm25": 0.1462896122332338,
+        "text": "me ( wfh ) policy employees may work from home up to 3 days per week with prior approval. interns may"
+      },
+      {
+        "rank": 4,
+        "id": "c1",
+        "score_hybrid": 0.4671971797943115,
+        "score_dense": 0.22802069783210754,
+        "score_bm25": 0.0,
+        "text": "ave must be approved by the reporting manager. 2. sick leave employees may take up to 10 days of sic"
+      },
+      {
+        "rank": 5,
+        "id": "c2",
+        "score_hybrid": 0.46501728892326355,
+        "score_dense": 0.22726231813430786,
+        "score_bm25": 0.0,
+        "text": "k leave annually. a medical certificate is required for absences longer than 2 days. 3. work - from - ho"
+      },
+      {
+        "rank": 6,
+        "id": "c9",
+        "score_hybrid": 0.46292462944984436,
+        "score_dense": 0.22653430700302124,
+        "score_bm25": 0.0,
+        "text": "approval. claims must be filed within 30 days of travel. 7. remote work equipment employees may req"
+      },
+      {
+        "rank": 7,
+        "id": "c11",
+        "score_hybrid": 0.3877516984939575,
+        "score_dense": 0.20038220286369324,
+        "score_bm25": 0.0,
+        "text": "ned upon exit. 8. code of conduct employees are expected to maintain professionalism, avoid conflict"
+      },
+      {
+        "rank": 8,
+        "id": "c8",
+        "score_hybrid": 0.30493444204330444,
+        "score_dense": 0.17157068848609924,
+        "score_bm25": 0.0,
+        "text": "ector approval. 6. reimbursement documentation all claims must include original receipts and manager"
+      },
+      {
+        "rank": 9,
+        "id": "c5",
+        "score_hybrid": 0.29140400886535645,
+        "score_dense": 0.1668635606765747,
+        "score_bm25": 0.0,
+        "text": ". business class is not allowed for domestic travel. employees may claim reimbursement up to 50, 000"
+      },
+      {
+        "rank": 10,
+        "id": "c12",
+        "score_hybrid": 0.25730741024017334,
+        "score_dense": 0.15500161051750183,
+        "score_bm25": 0.0,
+        "text": "s of interest, and adhere to company confidentiality guidelines."
+      },
+      {
+        "rank": 11,
+        "id": "c7",
+        "score_hybrid": 0.11606442183256149,
+        "score_dense": 0.10586422681808472,
+        "score_bm25": 0.0,
+        "text": "through the approved travel portal. international flights may be booked in premium economy with dir"
+      },
+      {
+        "rank": 12,
+        "id": "c6",
+        "score_hybrid": 0.07218500226736069,
+        "score_dense": 0.09059890359640121,
+        "score_bm25": 0.0,
+        "text": "yen per month for work - related expenses. 5. flight booking rules all domestic flights must be booked"
+      },
+      {
+        "rank": 13,
+        "id": "c10",
+        "score_hybrid": 0.0,
+        "score_dense": 0.06548628211021423,
+        "score_bm25": 0.0,
+        "text": "uest company - provided equipment including monitor, keyboard, and headphones. equipment must be retur"
+      }
+    ],
+    "rerank": [
+      {
+        "rank": 1,
+        "id": "c3",
+        "score_rerank": -10.383827209472656,
+        "score_hybrid": 0.6876018643379211,
+        "score_dense": 0.2651198208332062,
+        "score_bm25": 0.1462896122332338,
+        "text": "me ( wfh ) policy employees may work from home up to 3 days per week with prior approval. interns may"
+      },
+      {
+        "rank": 2,
+        "id": "c0",
+        "score_rerank": -10.762225151062012,
+        "score_hybrid": 1.0,
+        "score_dense": 0.34380030632019043,
+        "score_bm25": 0.2571784525473317,
+        "text": "hr policy document 1. paid leave policy employees are entitled to 20 days of paid leave per year. le"
+      },
+      {
+        "rank": 3,
+        "id": "c11",
+        "score_rerank": -10.93011474609375,
+        "score_hybrid": 0.3877516984939575,
+        "score_dense": 0.20038220286369324,
+        "score_bm25": 0.0,
+        "text": "ned upon exit. 8. code of conduct employees are expected to maintain professionalism, avoid conflict"
+      },
+      {
+        "rank": 4,
+        "id": "c1",
+        "score_rerank": -11.135751724243164,
+        "score_hybrid": 0.4671971797943115,
+        "score_dense": 0.22802069783210754,
+        "score_bm25": 0.0,
+        "text": "ave must be approved by the reporting manager. 2. sick leave employees may take up to 10 days of sic"
+      },
+      {
+        "rank": 5,
+        "id": "c2",
+        "score_rerank": -11.184574127197266,
+        "score_hybrid": 0.46501728892326355,
+        "score_dense": 0.22726231813430786,
+        "score_bm25": 0.0,
+        "text": "k leave annually. a medical certificate is required for absences longer than 2 days. 3. work - from - ho"
+      }
+    ]
+  },
+  "final": {
+    "selected": [
+      {
+        "rank": 1,
+        "id": "c3",
+        "score_rerank": -10.383827209472656,
+        "score_hybrid": 0.6876018643379211,
+        "score_dense": 0.2651198208332062,
+        "score_bm25": 0.1462896122332338,
+        "text": "me ( wfh ) policy employees may work from home up to 3 days per week with prior approval. interns may"
+      },
+      {
+        "rank": 2,
+        "id": "c0",
+        "score_rerank": -10.762225151062012,
+        "score_hybrid": 1.0,
+        "score_dense": 0.34380030632019043,
+        "score_bm25": 0.2571784525473317,
+        "text": "hr policy document 1. paid leave policy employees are entitled to 20 days of paid leave per year. le"
+      },
+      {
+        "rank": 3,
+        "id": "c11",
+        "score_rerank": -10.93011474609375,
+        "score_hybrid": 0.3877516984939575,
+        "score_dense": 0.20038220286369324,
+        "score_bm25": 0.0,
+        "text": "ned upon exit. 8. code of conduct employees are expected to maintain professionalism, avoid conflict"
+      },
+      {
+        "rank": 4,
+        "id": "c1",
+        "score_rerank": -11.135751724243164,
+        "score_hybrid": 0.4671971797943115,
+        "score_dense": 0.22802069783210754,
+        "score_bm25": 0.0,
+        "text": "ave must be approved by the reporting manager. 2. sick leave employees may take up to 10 days of sic"
+      },
+      {
+        "rank": 5,
+        "id": "c2",
+        "score_rerank": -11.184574127197266,
+        "score_hybrid": 0.46501728892326355,
+        "score_dense": 0.22726231813430786,
+        "score_bm25": 0.0,
+        "text": "k leave annually. a medical certificate is required for absences longer than 2 days. 3. work - from - ho"
+      }
+    ]
+  },
+  "timing_ms": {
+    "dense": 33.994,
+    "bm25": 0.574,
+    "hybrid": 9.448,
+    "rerank": 3032.757
+  },
+  "created_at": 1766064351.21572
+}

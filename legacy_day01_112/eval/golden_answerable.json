@@ -1,0 +1,63 @@
+[
+    {
+      "id": "GA_01",
+      "query": "What is the probation period for permanent employees?",
+      "expected_answer": "The probation period for permanent employees is six months.",
+      "supporting_ids": ["c1", "c2"]
+    },
+    {
+      "id": "GA_02",
+      "query": "Is medical leave allowed during the probation period?",
+      "expected_answer": "Medical leave is allowed during the probation period.",
+      "supporting_ids": ["c2", "c11"]
+    },
+    {
+      "id": "GA_03",
+      "query": "How many days of notice are required for resignation?",
+      "expected_answer": "Employees are required to give the notice period specified in the policy before resignation.",
+      "supporting_ids": ["c2", "c9"]
+    },
+    {
+      "id": "GA_04",
+      "query": "Does the notice period apply during probation?",
+      "expected_answer": "The notice period applies during the probation period as defined in the policy.",
+      "supporting_ids": ["c1", "c3"]
+    },
+    {
+      "id": "GA_05",
+      "query": "Can an employee take leave during probation?",
+      "expected_answer": "Employees are allowed to take leave during probation as per policy guidelines.",
+      "supporting_ids": ["c2", "c11"]
+    },
+    {
+      "id": "GA_06",
+      "query": "Is attendance tracking mandatory for employees?",
+      "expected_answer": "Attendance tracking is mandatory for all employees.",
+      "supporting_ids": ["c0", "c3"]
+    },
+    {
+      "id": "GA_07",
+      "query": "Does the company define different leave types?",
+      "expected_answer": "The company policy defines different types of leave for employees.",
+      "supporting_ids": ["c11", "c2"]
+    },
+    {
+      "id": "GA_08",
+      "query": "Is resignation allowed during the probation period?",
+      "expected_answer": "Employees are allowed to resign during the probation period by following the notice requirements.",
+      "supporting_ids": ["c1", "c9"]
+    },
+    {
+      "id": "GA_09",
+      "query": "Is approval required to take leave?",
+      "expected_answer": "Leave must be approved according to company policy.",
+      "supporting_ids": ["c11"]
+    },
+    {
+      "id": "GA_10",
+      "query": "Does company policy mention probation conditions?",
+      "expected_answer": "The company policy includes conditions applicable during the probation period.",
+      "supporting_ids": ["c1", "c2"]
+    }
+  ]
+  

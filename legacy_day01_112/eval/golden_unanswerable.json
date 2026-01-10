@@ -1,0 +1,63 @@
+[
+    {
+      "id": "GU_01",
+      "query": "What is the dress code during probation?",
+      "reason": "Dress code is not mentioned in the policy corpus",
+      "expected_outcome": "ABSTAIN"
+    },
+    {
+      "id": "GU_02",
+      "query": "What is the official HR email address?",
+      "reason": "HR contact details are not specified in the corpus",
+      "expected_outcome": "ABSTAIN"
+    },
+    {
+      "id": "GU_03",
+      "query": "What clause number defines medical leave during probation?",
+      "reason": "Policy does not include clause numbering",
+      "expected_outcome": "ABSTAIN"
+    },
+    {
+      "id": "GU_04",
+      "query": "Who approved the attendance policy?",
+      "reason": "Approver information is not present in the documents",
+      "expected_outcome": "ABSTAIN"
+    },
+    {
+      "id": "GU_05",
+      "query": "What is the penalty amount for late login?",
+      "reason": "No penalty amounts are defined in the corpus",
+      "expected_outcome": "ABSTAIN"
+    },
+    {
+      "id": "GU_06",
+      "query": "Is work from home allowed during probation?",
+      "reason": "Remote work policy is not covered in the corpus",
+      "expected_outcome": "ABSTAIN"
+    },
+    {
+      "id": "GU_07",
+      "query": "What is the probation extension policy?",
+      "reason": "Probation extension rules are not specified",
+      "expected_outcome": "ABSTAIN"
+    },
+    {
+      "id": "GU_08",
+      "query": "Is leave encashment allowed during probation?",
+      "reason": "Leave encashment is not mentioned",
+      "expected_outcome": "ABSTAIN"
+    },
+    {
+      "id": "GU_09",
+      "query": "Are probation reviews conducted monthly?",
+      "reason": "Review frequency is not described in the corpus",
+      "expected_outcome": "ABSTAIN"
+    },
+    {
+      "id": "GU_10",
+      "query": "What happens if attendance is not marked for a day?",
+      "reason": "Consequences are not defined in policy documents",
+      "expected_outcome": "ABSTAIN"
+    }
+  ]
+  

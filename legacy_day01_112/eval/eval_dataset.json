@@ -1,0 +1,33 @@
+[
+  {
+    "id": "q1_paid_leave_days",
+    "query": "How many paid leave days are employees entitled to per year?",
+    "expected": "ANSWER",
+    "gold_contains": ["20 days", "20"]
+  },
+  {
+    "id": "q2_sick_leave_days",
+    "query": "How many sick leave days can employees take annually?",
+    "expected": "ANSWER",
+    "gold_contains": ["10 days", "10"]
+  },
+  {
+    "id": "q3_wfh_interns",
+    "query": "How many days per week can interns work from home?",
+    "expected": "ANSWER",
+    "gold_contains": ["1 day", "1"]
+  },
+  {
+    "id": "q4_domestic_business_class",
+    "query": "Is business class allowed for domestic travel?",
+    "expected": "ANSWER",
+    "gold_contains": ["not allowed", "not", "is not allowed"]
+  },
+  {
+    "id": "q5_international_travel_policy",
+    "query": "What is the policy for international travel class booking?",
+    "expected": "ANSWER",
+    "gold_contains": ["international", "premium economy"]
+  }
+  
+]

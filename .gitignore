@@ -1,4 +1,10 @@
-# data & artifacts
+# # indexes + large generated files
+data/indexes/
+data/processed/
+__pycache__/
+*.pyc
+.DS_Store
+data & artifacts
 data/
 trace/*.json
 

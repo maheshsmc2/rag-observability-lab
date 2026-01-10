@@ -1,0 +1,8 @@
+{
+  "counts": {
+    "ANSWERABLE_FALSE_ABSTAIN": 1,
+    "OK": 2,
+    "UNANSWERABLE_FALSE_PASS": 1,
+    "SEMANTIC_ABSENCE": 1
+  }
+}

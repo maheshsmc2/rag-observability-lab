@@ -215,7 +215,8 @@ def _has_required_anchor(query: str, evidence_text: str) -> bool:
     return any(a in text for a in anchors)
 
 
-def _build_answer_no_llm(results, max_chars: int = 600) -> str:
+def _build_answer_no_llm(query: str, results, max_chars: int = 600) -> str:
+
     """
     Deterministic answer: return the top chunk text (trimmed) + source id.
     This is enough for Day 104 wiring and will make Precision@1 non-zero if
@@ -279,10 +280,12 @@ def _gate_if_low_confidence(query: str, result, min_score: float, debug: bool, r
         env = _wrap(query, route_name, result, True, best_score, min_score)
         env["evidence_preview"] = _extract_evidence_preview(result, n=2)
 
-        ans = _build_answer_no_llm(result)
+        ans = _build_answer_no_llm(query, result)
+
         evidence_text = ans.lower() if ans else ""
 
-        ans = _build_answer_no_llm(result)
+        ans = _build_answer_no_llm(query, result)
+
 
         # NEW: use raw evidence, not synthesized answer
         evidence_text = " ".join(
@@ -400,7 +403,8 @@ def _gate_if_low_confidence(query: str, result, min_score: float, debug: bool, r
     if top1 is not None and top2 is not None:
         env["score_margin"] = float(top1 - top2)
 
-    ans = _build_answer_no_llm(result)
+    ans = _build_answer_no_llm(query, result)
+
     if ans:
         env["decision"] = "ANSWER"
         env["answer"] = ans

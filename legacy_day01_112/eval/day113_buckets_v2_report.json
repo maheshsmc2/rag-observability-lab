@@ -1,0 +1,28 @@
+{
+  "source": "eval/day112_results.json",
+  "bucket_counts": {
+    "OK": 3,
+    "CONTENT_MIXING": 1,
+    "SEMANTIC_ABSENCE": 1
+  },
+  "failures": [
+    {
+      "id": "q3_wfh_interns",
+      "bucket": "CONTENT_MIXING",
+      "expected": "ANSWER",
+      "predicted": "ANSWER",
+      "passed_gate": true,
+      "query": "How many days per week can interns work from home?",
+      "answer_snippet": "me ( wfh ) policy employees may work from home up to 3 days per week with prior approval. interns may"
+    },
+    {
+      "id": "q5_international_travel_policy",
+      "bucket": "SEMANTIC_ABSENCE",
+      "expected": "ABSTAIN",
+      "predicted": "ANSWER",
+      "passed_gate": true,
+      "query": "What is the policy for international travel class booking?",
+      "answer_snippet": "wfh up to 1 day per week. 4. travel & expense policy domestic travel must be booked in economy class"
+    }
+  ]
+}

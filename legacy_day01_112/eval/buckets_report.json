@@ -1,0 +1,121 @@
+[
+  {
+    "id": "Q1",
+    "query": "What is the probation period?",
+    "type": "normal",
+    "expected_ids": [
+      "c11",
+      "c1",
+      "c2"
+    ],
+    "expected_outcome": "ANSWERED",
+    "retrieved_ids_topk": [
+      "c11",
+      "c2",
+      "c9",
+      "c1",
+      "c12"
+    ],
+    "hit_at_k": 1,
+    "gate_pass": false,
+    "gate_reason": "low_gap(<0.25)",
+    "score1": -10.777925491333008,
+    "score2": -10.860593795776367,
+    "gap": 0.08266830444335938,
+    "bucket": "ANSWERABLE_FALSE_ABSTAIN"
+  },
+  {
+    "id": "Q2",
+    "query": "Is medical leave allowed during probation?",
+    "type": "normal",
+    "expected_ids": [
+      "c2",
+      "c1",
+      "c11"
+    ],
+    "expected_outcome": "ANSWERED",
+    "retrieved_ids_topk": [
+      "c2",
+      "c1",
+      "c11",
+      "c0",
+      "c5"
+    ],
+    "hit_at_k": 1,
+    "gate_pass": true,
+    "gate_reason": "pass",
+    "score1": -3.666368007659912,
+    "score2": -9.592794418334961,
+    "gap": 5.926426410675049,
+    "bucket": "OK"
+  },
+  {
+    "id": "Q3",
+    "query": "How many days notice is required for resignation?",
+    "type": "normal",
+    "expected_ids": [
+      "c2",
+      "c9",
+      "c1",
+      "c0",
+      "c3"
+    ],
+    "expected_outcome": "ANSWERED",
+    "retrieved_ids_topk": [
+      "c2",
+      "c9",
+      "c1",
+      "c0",
+      "c3"
+    ],
+    "hit_at_k": 1,
+    "gate_pass": true,
+    "gate_reason": "pass",
+    "score1": -4.302614212036133,
+    "score2": -5.634890556335449,
+    "gap": 1.3322763442993164,
+    "bucket": "OK"
+  },
+  {
+    "id": "Q4",
+    "query": "Can employees work remotely during probation?",
+    "type": "unanswerable",
+    "expected_ids": [],
+    "expected_outcome": "ABSTAIN_LOW_CONF",
+    "retrieved_ids_topk": [
+      "c9",
+      "c3",
+      "c11",
+      "c1",
+      "c5"
+    ],
+    "hit_at_k": null,
+    "gate_pass": true,
+    "gate_reason": "pass",
+    "score1": -4.440149307250977,
+    "score2": -7.011655330657959,
+    "gap": 2.5715060234069824,
+    "bucket": "UNANSWERABLE_FALSE_PASS"
+  },
+  {
+    "id": "Q5",
+    "query": "What is the dress code during probation?",
+    "type": "unanswerable",
+    "expected_ids": [],
+    "expected_outcome": "ABSTAIN_LOW_CONF",
+    "retrieved_ids_topk": [
+      "c11",
+      "c12",
+      "c2",
+      "c5",
+      "c1"
+    ],
+    "hit_at_k": null,
+    "gate_pass": false,
+    "gate_reason": "semantic_absence",
+    "score1": -9.55739688873291,
+    "score2": -11.023018836975098,
+    "gap": 1.4656219482421875,
+    "bucket": "SEMANTIC_ABSENCE"
+  }
+]

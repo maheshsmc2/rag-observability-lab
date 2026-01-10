@@ -1,0 +1,200 @@
+{
+  "answerable": {
+    "total": 10,
+    "correct": 0,
+    "precision_at_1": 0.0,
+    "avg_latency_ms": 302.92,
+    "rows": [
+      {
+        "id": "GA_01",
+        "query": "What is the probation period for permanent employees?",
+        "expected": "ANSWER",
+        "got_decision": "ABSTAIN",
+        "correct": false,
+        "latency_ms": 37.97,
+        "answer_snippet": ""
+      },
+      {
+        "id": "GA_02",
+        "query": "Is medical leave allowed during the probation period?",
+        "expected": "ANSWER",
+        "got_decision": "ANSWER",
+        "correct": false,
+        "latency_ms": 2637.25,
+        "answer_snippet": "k leave annually. a medical certificate is required for absences longer than 2 days. 3. work - from - ho\n\nSource: c2"
+      },
+      {
+        "id": "GA_03",
+        "query": "How many days of notice are required for resignation?",
+        "expected": "ANSWER",
+        "got_decision": "ANSWER",
+        "correct": false,
+        "latency_ms": 76.92,
+        "answer_snippet": "k leave annually. a medical certificate is required for absences longer than 2 days. 3. work - from - ho\n\nSource: c2"
+      },
+      {
+        "id": "GA_04",
+        "query": "Does the notice period apply during probation?",
+        "expected": "ANSWER",
+        "got_decision": "ABSTAIN",
+        "correct": false,
+        "latency_ms": 79.51,
+        "answer_snippet": ""
+      },
+      {
+        "id": "GA_05",
+        "query": "Can an employee take leave during probation?",
+        "expected": "ANSWER",
+        "got_decision": "ANSWER",
+        "correct": false,
+        "latency_ms": 31.56,
+        "answer_snippet": "ave must be approved by the reporting manager. 2. sick leave employees may take up to 10 days of sic\n\nSource: c1"
+      },
+      {
+        "id": "GA_06",
+        "query": "Is attendance tracking mandatory for employees?",
+        "expected": "ANSWER",
+        "got_decision": "ABSTAIN",
+        "correct": false,
+        "latency_ms": 76.45,
+        "answer_snippet": ""
+      },
+      {
+        "id": "GA_07",
+        "query": "Does the company define different leave types?",
+        "expected": "ANSWER",
+        "got_decision": "ANSWER",
+        "correct": false,
+        "latency_ms": 8.37,
+        "answer_snippet": "k leave annually. a medical certificate is required for absences longer than 2 days. 3. work - from - ho\n\nSource: c2"
+      },
+      {
+        "id": "GA_08",
+        "query": "Is resignation allowed during the probation period?",
+        "expected": "ANSWER",
+        "got_decision": "ABSTAIN",
+        "correct": false,
+        "latency_ms": 28.52,
+        "answer_snippet": ""
+      },
+      {
+        "id": "GA_09",
+        "query": "Is approval required to take leave?",
+        "expected": "ANSWER",
+        "got_decision": "ANSWER",
+        "correct": false,
+        "latency_ms": 26.95,
+        "answer_snippet": "ave must be approved by the reporting manager. 2. sick leave employees may take up to 10 days of sic\n\nSource: c1"
+      },
+      {
+        "id": "GA_10",
+        "query": "Does company policy mention probation conditions?",
+        "expected": "ANSWER",
+        "got_decision": "ANSWER",
+        "correct": false,
+        "latency_ms": 25.71,
+        "answer_snippet": "s of interest, and adhere to company confidentiality guidelines.\n\nSource: c12"
+      }
+    ]
+  },
+  "unanswerable": {
+    "total": 10,
+    "correct_abstains": 4,
+    "false_confidence": 6,
+    "abstain_accuracy": 0.4,
+    "false_confidence_rate": 0.6,
+    "avg_latency_ms": 27.58,
+    "rows": [
+      {
+        "id": "GU_01",
+        "query": "What is the dress code during probation?",
+        "expected": "ABSTAIN",
+        "got_decision": "ABSTAIN",
+        "false_confidence": false,
+        "latency_ms": 7.54,
+        "answer_snippet": ""
+      },
+      {
+        "id": "GU_02",
+        "query": "What is the official HR email address?",
+        "expected": "ABSTAIN",
+        "got_decision": "ANSWER",
+        "false_confidence": true,
+        "latency_ms": 7.05,
+        "answer_snippet": "s of interest, and adhere to company confidentiality guidelines.\n\nSource: c12"
+      },
+      {
+        "id": "GU_03",
+        "query": "What clause number defines medical leave during probation?",
+        "expected": "ABSTAIN",
+        "got_decision": "ANSWER",
+        "false_confidence": true,
+        "latency_ms": 7.2,
+        "answer_snippet": "k leave annually. a medical certificate is required for absences longer than 2 days. 3. work - from - ho\n\nSource: c2"
+      },
+      {
+        "id": "GU_04",
+        "query": "Who approved the attendance policy?",
+        "expected": "ABSTAIN",
+        "got_decision": "ANSWER",
+        "false_confidence": true,
+        "latency_ms": 76.12,
+        "answer_snippet": "me ( wfh ) policy employees may work from home up to 3 days per week with prior approval. interns may\n\nSource: c3"
+      },
+      {
+        "id": "GU_05",
+        "query": "What is the penalty amount for late login?",
+        "expected": "ABSTAIN",
+        "got_decision": "ANSWER",
+        "false_confidence": true,
+        "latency_ms": 8.37,
+        "answer_snippet": "approval. claims must be filed within 30 days of travel. 7. remote work equipment employees may req\n\nSource: c9"
+      },
+      {
+        "id": "GU_06",
+        "query": "Is work from home allowed during probation?",
+        "expected": "ABSTAIN",
+        "got_decision": "ANSWER",
+        "false_confidence": true,
+        "latency_ms": 32.26,
+        "answer_snippet": "me ( wfh ) policy employees may work from home up to 3 days per week with prior approval. interns may\n\nSource: c3"
+      },
+      {
+        "id": "GU_07",
+        "query": "What is the probation extension policy?",
+        "expected": "ABSTAIN",
+        "got_decision": "ABSTAIN",
+        "false_confidence": false,
+        "latency_ms": 7.81,
+        "answer_snippet": ""
+      },
+      {
+        "id": "GU_08",
+        "query": "Is leave encashment allowed during probation?",
+        "expected": "ABSTAIN",
+        "got_decision": "ABSTAIN",
+        "false_confidence": false,
+        "latency_ms": 29.24,
+        "answer_snippet": ""
+      },
+      {
+        "id": "GU_09",
+        "query": "Are probation reviews conducted monthly?",
+        "expected": "ABSTAIN",
+        "got_decision": "ABSTAIN",
+        "false_confidence": false,
+        "latency_ms": 25.81,
+        "answer_snippet": ""
+      },
+      {
+        "id": "GU_10",
+        "query": "What happens if attendance is not marked for a day?",
+        "expected": "ABSTAIN",
+        "got_decision": "ANSWER",
+        "false_confidence": true,
+        "latency_ms": 74.43,
+        "answer_snippet": ". business class is not allowed for domestic travel. employees may claim reimbursement up to 50, 000\n\nSource: c5"
+      }
+    ]
+  }
+}
