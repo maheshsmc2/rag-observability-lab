@@ -1,0 +1,22 @@
+[
+  {
+    "id": "doc_1",
+    "text": "Employees are entitled to 20 days of paid leave per year."
+  },
+  {
+    "id": "doc_2",
+    "text": "Sick leave can be taken with prior manager approval."
+  },
+  {
+    "id": "doc_3",
+    "text": "Work from home is allowed up to two days per week."
+  },
+  {
+    "id": "doc_4",
+    "text": "Maternity leave is provided as per government regulations."
+  },
+  {
+    "id": "doc_5",
+    "text": "Casual leave cannot be carried forward to the next year."
+  }
+]
